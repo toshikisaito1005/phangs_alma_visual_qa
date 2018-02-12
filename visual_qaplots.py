@@ -32,9 +32,9 @@ for i in range(len(dir_ms)):
                + dir_ms[i].split("/")[5].replace(".ms", "") +"/"
     done = glob.glob(dir_save)
     if done:
-        print("skip:   " + dir_ms[i].split("/")[5])
+        print("skip:   " + dir_ms[i].split("/")[5] + " " + str(i) + "/" + str(len(dir_ms)))
     if not done:
-        print("PLOTMS: " + dir_ms[i].split("/")[5])
+        print("PLOTMS: " + dir_ms[i].split("/")[5] + " " + str(i) + "/" + str(len(dir_ms)))
         msmd.open(dir_ms[i])
         field_intent = ["bpcal", "phcal"]
         field_name = [msmd.fieldsforintent("*BANDPASS*", True)[0],
