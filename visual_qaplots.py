@@ -18,16 +18,16 @@ import shutil
 # all ms, just remove visual_qa/ directory.
 
 
-dir_ms = glob.glob("science_*/group.*/member.*/calibrated/uid*.ms")
+dir_ms = glob.glob("../science_*/group.*/member.*/calibrated/uid*.ms")
 dir_current = os.getcwd()
 
-done = glob.glob("visual_qa/")
+done = glob.glob("../visual_qa/")
 if not done:
-    os.mkdir("visual_qa/")
+    os.mkdir("../visual_qa/")
 
 #plotms
 for i in range(len(dir_ms)):
-    dir_save = "visual_qa/" + dir_ms[i].split("/")[4].replace(".ms", "") +"/"
+    dir_save = "../visual_qa/" + dir_ms[i].split("/")[4].replace(".ms", "") +"/"
     done = glob.glob(dir_save)
     if done:
         print("skip:   " + dir_ms[i].split("/")[4])
@@ -71,7 +71,7 @@ for i in [0,1]:
     field_name = [msmd.fieldsforintent("*BANDPASS*", True)[0], msmd.fieldsforintent("*PHASE*", True)[0]]
     field_id = [msmd.fieldsforintent("*BANDPASS*", False)[0], msmd.fieldsforintent("*PHASE*", False)[0]]
     msmd.done()
-    dir_save = "visual_qa/" + dir_ms[i].split("/")[4].replace(".ms", "") +"/"
+    dir_save = "../visual_qa/" + dir_ms[i].split("/")[4].replace(".ms", "") +"/"
     print("png2pdf: " + dir_ms[i].split("/")[4])
     dir_weblog = glob.glob(dir_ms[i].split("calibrated/")[0] + "qa/pipeline-*/")
     if not dir_weblog:
@@ -111,7 +111,7 @@ for i in [0,1]:
                 os.system("convert " + im[0] + " " + im[1] + " " + im[2] + " " + im[3] + " " + dir_save + dir_ms[i].split("/")[4].replace(".ms", "") + "_" + m + "_" + n + ".pdf")
                 os.system("rm -rf " + dir_save + "p00*.pdf")
             pdf = glob.glob(dir_save + "*.pdf")
-            shutil.copy(pdf[0], "visual_qa/")
-            shutil.copy(pdf[1], "visual_qa/")
-            shutil.copy(pdf[2], "visual_qa/")
+            shutil.copy(pdf[0], "../visual_qa/")
+            shutil.copy(pdf[1], "../visual_qa/")
+            shutil.copy(pdf[2], "../visual_qa/")
 

@@ -2,7 +2,7 @@ import os
 import sys
 import glob
 
-dir_data = glob.glob("science_*/group.*/member.*/")
+dir_data = glob.glob("../science_*/group.*/member.*/")
 dir_current = os.getcwd()
 
 for i in range(len(dir_data)):
