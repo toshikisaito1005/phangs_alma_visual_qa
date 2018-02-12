@@ -8,7 +8,7 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
 
 ## Directory Tree　　
 ```  
-2017.1.00886.L  ! parent directory
+2017.1.00886.L                      ! parent directory
     ├  science_
     ├  science_
     ├  science_
