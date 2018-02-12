@@ -17,14 +17,15 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
     |    ├  run_scriptForPI.py
     |    └  visual_qaplots.py
     └  visual_qa                    ! automatically created by visual_qaplots.py  
-         ├  uid  
-         ├  uid.pdf  
-         ├  uid.pdf  
-         ├  uid.pdf  
-         ├  uid.pdf  
-         ├  uid.pdf
-         ├  uid
-         └  uid
+    |    ├  uid  
+    |    ├  uid.pdf  
+    |    ├  uid.pdf  
+    |    ├  uid.pdf  
+    |    ├  uid.pdf  
+    |    ├  uid.pdf  
+    |    ├  uid  
+    |    └  uid  
+    └  imaging                      ! contains all images by imaging pipelines
 ```  
 
 
