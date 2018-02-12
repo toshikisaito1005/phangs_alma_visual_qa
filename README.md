@@ -1,12 +1,12 @@
 # README for PHANGS Visual Quality Assurance  
 ## Get started
+run this command under 2017.1.00886.L/ directory.
 ```
-git clone 
+git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
 ```
+
 
 ## Directory Tree　　
-TBE.  
-
 ```  
 2017.1.00886.L  ! parent directory
     ├  science_goal.uid
@@ -18,8 +18,11 @@ TBE.
     └  visual_qa                    ! automatically created by visual_qaplots.py  
 ```  
 
+
 ## execfile("run_scriptForPI.py")  
 TBE.  
 
+
 ## execfile("visual_qaplots.py")
 TBE.  
+
