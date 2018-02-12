@@ -1,4 +1,9 @@
 # README for PHANGS Visual Quality Assurance  
+## Get started
+```
+git clone 
+```
+
 ## Directory Tree　　
 TBE.  
 
