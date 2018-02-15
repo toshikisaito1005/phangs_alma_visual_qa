@@ -9,22 +9,21 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
 ## Directory Tree　　
 ```  
 2017.1.00886.L                      ! parent directory
-    ├  science_
-    ├  science_
-    ├  science_
+    ├  science_goal.uid___A001_X1284_X2633  
+    ├  science_goal.uid___A001_X1284_X263d  
+    ├  science_goal.uid___A001_X1284_*  
     ├  phangs_visual_qa_scripts     ! contains all scripts
     |    ├  README.md               ! this file
-    |    ├  run_scriptForPI.py
-    |    └  visual_qaplots.py
+    |    ├  run_scriptForPI.py  
+    |    └  visual_qaplots.py  
     ├  visual_qa                    ! automatically created by visual_qaplots.py  
-    |    ├  uid  
-    |    ├  uid.pdf  
-    |    ├  uid.pdf  
-    |    ├  uid.pdf  
-    |    ├  uid.pdf  
-    |    ├  uid.pdf  
-    |    ├  uid  
-    |    └  uid  
+    |    ├  uid___A002_Xc53e4e_X2579  
+    |    ├  uid___A002_Xc53e4e_X2579_bpcal_amp.pdf  
+    |    ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
+    |    ├  uid___A002_Xc53e4e_X2579_phcal_amp.pdf  
+    |    ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
+    |    ├  uid___A002_Xc53e4e_X2579_status.pdf    
+    |    └  uid___A002_X*  
     └  imaging                      ! contains all images by imaging pipelines
 ```  
 
