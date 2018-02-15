@@ -16,16 +16,15 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
     |    ├  README.md                                   ! this file
     |    ├  run_scriptForPI.py  
     |    └  visual_qaplots.py  
-    ├  visual_qa                                        ! automatically created by visual_qaplots.py  
-    |    ├  uid___A002_Xc53e4e_X2579  
-    |    |    └  uid___A002_Xc53e4e_X2579_*.png         !  products by plotms task
-    |    ├  uid___A002_Xc53e4e_X2579_bpcal_amp.pdf  
-    |    ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
-    |    ├  uid___A002_Xc53e4e_X2579_phcal_amp.pdf  
-    |    ├  uid___A002_Xc53e4e_X2579_phcal_phase.pdf  
-    |    ├  uid___A002_Xc53e4e_X2579_status.pdf    
-    |    └  uid___A002_X*  
-    └  imaging                                          ! contains all images by imaging pipelines
+    └  visual_qa                                        ! automatically created by visual_qaplots.py  
+         ├  uid___A002_Xc53e4e_X2579  
+         |    └  uid___A002_Xc53e4e_X2579_*.png         !  products by plotms task
+         ├  uid___A002_Xc53e4e_X2579_bpcal_amp.pdf  
+         ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
+         ├  uid___A002_Xc53e4e_X2579_phcal_amp.pdf  
+         ├  uid___A002_Xc53e4e_X2579_phcal_phase.pdf  
+         ├  uid___A002_Xc53e4e_X2579_status.pdf    
+         └  uid___A002_X*  
 ```  
 
 
