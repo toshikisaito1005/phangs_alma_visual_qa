@@ -11,13 +11,12 @@ from itertools import product
 #
 #
 ###How to run
-#Simply locate this script under */2017.1.00886.L/ directory where all
-#science_* direcitories are located. This script will create visual_qa/
-#directory under */2017.1.00886.L/ which contains all png files. The name
-#of the created sub-directories is same as the *.ms name. When you want to
-#re-run this script for a certain ms (e.g., uid___A002_Xc55c89_X426c.ms),
-#you need to remove a sub-directory, visual_qa/uid___A002_Xc55c89_X426c/,
-#in advance. Re-run for all ms, just remove visual_qa/ directory.
+#This script will create visual_qa/ directory under */2017.1.00886.L/ 
+#which contains all png files. The name of the created sub-directories 
+#is same as the *.ms name. When you want to re-run this script for a 
+#certain ms (e.g., uid___A002_Xc55c89_X426c.ms), you need to remove a 
+#sub-directory, visual_qa/uid___A002_Xc55c89_X426c/, in advance. Re-run
+#for all ms, just remove visual_qa/ directory.
 
 
 dir_ms = glob.glob("../science_*/group.*/member.*/calibrated/uid*.ms")
