@@ -2,7 +2,7 @@ import os
 import sys
 import glob
 import shutil
-
+from itertools import product
 
 ###extract diagnostic plots from delivered visibility data for PHANGS
 #2018-02-07: developed by tsaito
@@ -28,119 +28,116 @@ if not done:
     os.mkdir("../visual_qa/")
 
 ###plotms
-for i in range(len(dir_ms)):
+field_intent = ["bpcal", "phcal"]
+dir_mss = range(len(dir_ms))
+intents = range(len(field_intent))
+yaxes = ["amp__", "phase"]
+
+for i, j, yaxis in product(dir_mss, intents, yaxes):
+#for i in range(len(dir_ms)):
     dir_save = "../visual_qa/" \
                + dir_ms[i].split("/")[5].replace(".ms", "") +"/"
     done = glob.glob(dir_save)
     if done:
-        print("skip:   " + dir_ms[i].split("/")[5] \
-              + " (" + str(i + 1) + "/" + str(len(dir_ms)) + ")")
+        print("skip:   " + dir_ms[i].split("/")[5] + " (" + str(i + 1) \
+              + "/" + str(len(dir_ms)) + ")")
     if not done:
-        print("PLOTMS: " + dir_ms[i].split("/")[5] \
-              + " (" + str(i + 1) + "/" + str(len(dir_ms)) + ")")
+        print("PLOTMS: " + dir_ms[i].split("/")[5] + " (" + str(i + 1) \
+              + "/" + str(len(dir_ms)) + ")")
         msmd.open(dir_ms[i])
-        field_intent = ["bpcal", "phcal"]
         field_name = [msmd.fieldsforintent("*BANDPASS*", True)[0],
                       msmd.fieldsforintent("*PHASE*", True)[0]]
         field_id = [msmd.fieldsforintent("*BANDPASS*", False)[0],
                     msmd.fieldsforintent("*PHASE*", False)[0]]
         msmd.done()
         os.mkdir(dir_save)
-        for j in range(len(field_intent)):
-            for yaxis in ["amp__", "phase"]:
-                for xaxis in ["ant1__", "ant2__", "uvdist"]:
-                    avgchannel = "1e8"
-                    avgtime = "1e8"
-                    avgscan = True
-                    plotfile = dir_save \
-                               + dir_ms[i].split("/")[5]\
-                               .replace(".ms", "") + "_" + yaxis + "_" \
-                               + xaxis + "_" + field_intent[j] \
-                               + "_avgtc.png"
-                    plotms(vis = dir_ms[i],
-                           gridrows = 2,
-                           gridcols = 2,
-                           xaxis = xaxis.replace("__", ""),
-                           yaxis = yaxis.replace("__", ""),
-                           ydatacolumn = "corrected",
-                           field = field_name[j],
-                           spw = "16,18,20,22",
-                           averagedata = True,
-                           avgchannel = avgchannel,
-                           avgtime = avgtime,
-                           avgscan = avgscan,
-                           iteraxis = "spw",
-                           coloraxis = "corr",
-                           plotfile = plotfile,
-                           expformat = "png",
-                           overwrite = False,
-                           showgui = False,
-                           title = plotfile)
-                    os.rename(plotfile.replace(".png",
-                                               "_Spw16,18,20,22.png"),
-                              plotfile)
-                for xaxis in ["ant1__", "ant2__", "uvdist", "time__"]:
-                    avgchannel = "1e8"
-                    avgtime = "1"
-                    avgscan = False
-                    plotfile = dir_save \
-                               + dir_ms[i].split("/")[5]\
-                               .replace(".ms", "") + "_" + yaxis + "_" \
-                               + xaxis + "_" + field_intent[j] \
-                               + "_avg_c.png"
-                    plotms(vis = dir_ms[i],
-                           gridrows = 2,
-                           gridcols = 2,
-                           xaxis = xaxis.replace("__", ""),
-                           yaxis = yaxis.replace("__", ""),
-                           ydatacolumn = "corrected",
-                           field = field_name[j],
-                           spw = "16,18,20,22",
-                           averagedata = True,
-                           avgchannel = avgchannel,
-                           avgtime = avgtime,
-                           avgscan = avgscan,
-                           iteraxis = "spw",
-                           coloraxis = "corr",
-                           plotfile = plotfile,
-                           expformat = "png",
-                           overwrite = False,
-                           showgui = False,
-                           title = plotfile)
-                    os.rename(plotfile.replace(".png",
-                                               "_Spw16,18,20,22.png"),
-                              plotfile)
-                for xaxis in ["ant1__", "ant2__", "uvdist", "freq__"]:
-                    avgchannel = "1"
-                    avgtime = "1e8"
-                    avgscan = True
-                    plotfile = dir_save \
-                               + dir_ms[i].split("/")[5]\
-                               .replace(".ms", "") + "_" + yaxis + "_" \
-                               + xaxis + "_" + field_intent[j] \
-                               + "_avgt_.png"
-                    plotms(vis = dir_ms[i],
-                           gridrows = 2,
-                           gridcols = 2,
-                           xaxis = xaxis.replace("__", ""),
-                           yaxis = yaxis.replace("__", ""),
-                           ydatacolumn = "corrected",
-                           field = field_name[j],
-                           spw = "16,18,20,22",
-                           averagedata = True,
-                           avgchannel = avgchannel,
-                           avgtime = avgtime,
-                           avgscan = avgscan,
-                           iteraxis = "spw",
-                           coloraxis = "corr",
-                           plotfile = plotfile,
-                           expformat = "png",
-                           overwrite = False,
-                           showgui = False,
-                           title = plotfile)
-                    os.rename(plotfile.replace(".png",
-                                               "_Spw16,18,20,22.png"),
-                              plotfile)
+        for xaxis in ["ant1__", "ant2__", "uvdist"]:
+            avgchannel = "1e8"
+            avgtime = "1e8"
+            avgscan = True
+            plotfile = dir_save \
+                       + dir_ms[i].split("/")[5].replace(".ms", "") \
+                       + "_" + yaxis + "_" + xaxis + "_" \
+                       + field_intent[j] + "_avgtc.png"
+            plotms(vis = dir_ms[i],
+                   gridrows = 2,
+                   gridcols = 2,
+                   xaxis = xaxis.replace("__", ""),
+                   yaxis = yaxis.replace("__", ""),
+                   ydatacolumn = "corrected",
+                   field = field_name[j],
+                   spw = "16,18,20,22",
+                   averagedata = True,
+                   avgchannel = avgchannel,
+                   avgtime = avgtime,
+                   avgscan = avgscan,
+                   iteraxis = "spw",
+                   coloraxis = "corr",
+                   plotfile = plotfile,
+                   expformat = "png",
+                   overwrite = False,
+                   showgui = False,
+                   title = plotfile)
+            os.rename(plotfile.replace(".png", "_Spw16,18,20,22.png"),
+                      plotfile)
+        for xaxis in ["ant1__", "ant2__", "uvdist", "time__"]:
+            avgchannel = "1e8"
+            avgtime = "1"
+            avgscan = False
+            plotfile = dir_save \
+                       + dir_ms[i].split("/")[5].replace(".ms", "") \
+                       + "_" + yaxis + "_" + xaxis + "_" \
+                       + field_intent[j] + "_avg_c.png"
+            plotms(vis = dir_ms[i],
+                   gridrows = 2,
+                   gridcols = 2,
+                   xaxis = xaxis.replace("__", ""),
+                   yaxis = yaxis.replace("__", ""),
+                   ydatacolumn = "corrected",
+                   field = field_name[j],
+                   spw = "16,18,20,22",
+                   averagedata = True,
+                   avgchannel = avgchannel,
+                   avgtime = avgtime,
+                   avgscan = avgscan,
+                   iteraxis = "spw",
+                   coloraxis = "corr",
+                   plotfile = plotfile,
+                   expformat = "png",
+                   overwrite = False,
+                   showgui = False,
+                   title = plotfile)
+            os.rename(plotfile.replace(".png", "_Spw16,18,20,22.png"),
+                      plotfile)
+        for xaxis in ["ant1__", "ant2__", "uvdist", "freq__"]:
+            avgchannel = "1"
+            avgtime = "1e8"
+            avgscan = True
+            plotfile = dir_save \
+                       + dir_ms[i].split("/")[5].replace(".ms", "") \
+                       + "_" + yaxis + "_" + xaxis + "_" \
+                       + field_intent[j] + "_avgt_.png"
+            plotms(vis = dir_ms[i],
+                   gridrows = 2,
+                   gridcols = 2,
+                   xaxis = xaxis.replace("__", ""),
+                   yaxis = yaxis.replace("__", ""),
+                   ydatacolumn = "corrected",
+                   field = field_name[j],
+                   spw = "16,18,20,22",
+                   averagedata = True,
+                   avgchannel = avgchannel,
+                   avgtime = avgtime,
+                   avgscan = avgscan,
+                   iteraxis = "spw",
+                   coloraxis = "corr",
+                   plotfile = plotfile,
+                   expformat = "png",
+                   overwrite = False,
+                   showgui = False,
+                   title = plotfile)
+            os.rename(plotfile.replace(".png", "_Spw16,18,20,22.png"),
+                      plotfile)
 
 ###png2pdf
 #for i in range(len(dir_ms)):
