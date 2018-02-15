@@ -34,23 +34,26 @@ intents = range(len(field_intent))
 yaxes = ["amp__", "phase"]
 
 for i, j, yaxis in product(dir_mss, intents, yaxes):
-#for i in range(len(dir_ms)):
     dir_save = "../visual_qa/" \
                + dir_ms[i].split("/")[5].replace(".ms", "") +"/"
-    done = glob.glob(dir_save)
+    done = glob.glob(dir_save + "*" + yaxis + "*" + field_intent[j] + "*")
     if done:
-        print("skip:   " + dir_ms[i].split("/")[5] + " (" + str(i + 1) \
-              + "/" + str(len(dir_ms)) + ")")
+        print("skip   " + "(" + str(i + 1) + "/" + str(len(dir_ms)) + ")" \
+              + ": " + dir_ms[i].split("/")[5] + " " + field_intent[j] \
+              + " (" + yaxis.replace("__", "") + " vs *)")
     if not done:
-        print("PLOTMS: " + dir_ms[i].split("/")[5] + " (" + str(i + 1) \
-              + "/" + str(len(dir_ms)) + ")")
+        print("PLOTMS " + "(" + str(i + 1) + "/" + str(len(dir_ms)) + ")" \
+              + ": " + dir_ms[i].split("/")[5] + " " + field_intent[j] \
+              + " (" + yaxis.replace("__", "") + " vs *)")
         msmd.open(dir_ms[i])
         field_name = [msmd.fieldsforintent("*BANDPASS*", True)[0],
                       msmd.fieldsforintent("*PHASE*", True)[0]]
         field_id = [msmd.fieldsforintent("*BANDPASS*", False)[0],
                     msmd.fieldsforintent("*PHASE*", False)[0]]
         msmd.done()
-        os.mkdir(dir_save)
+        done2 = glob.glob(dir_save)
+        if not done2:
+            os.mkdir(dir_save)
         for xaxis in ["ant1__", "ant2__", "uvdist"]:
             avgchannel = "1e8"
             avgtime = "1e8"
@@ -187,7 +190,7 @@ for i in range(len(dir_ms)):
                       + dir_save \
                       + dir_ms[i].split("/")[5].replace(".ms", "") \
                       + "_status.pdf")
-        for m, n product(range(len(intents)), yaxes)
+        for m, n in product(range(len(intents)), yaxes):
             #plotms png files
             #ant1
             im = sorted(glob.glob(dir_save \
