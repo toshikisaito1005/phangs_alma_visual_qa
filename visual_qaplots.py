@@ -140,8 +140,9 @@ for i, j, yaxis in product(dir_mss, intents, yaxes):
                       plotfile)
 
 ###png2pdf
-#for i in range(len(dir_ms)):
-for i in [0,1]:
+yaxes = ["amp", "phase"]
+for i in range(len(dir_ms)):
+#for i in [0,1]:
     done = glob.glob("../visual_qa/" \
                      + dir_ms[i].split("/")[5].replace(".ms", "") \
                      + "*.pdf")
@@ -174,7 +175,7 @@ for i in [0,1]:
                               + "-summary.spw*.png")
         other_file = glob.glob(dir_weblog[0] + "html/sessionsession_*/" \
                                + dir_ms[i].split("/")[5] + "/*.png")
-        for m in range(len(field_intent)):
+        for m in range(len(intents)):
             #png files from weblog
             os.system("montage " + other_file[0] + " " + other_file[1] \
                       + " " + other_file[2] + " " + other_file[3] + " " \
@@ -186,70 +187,66 @@ for i in [0,1]:
                       + dir_save \
                       + dir_ms[i].split("/")[5].replace(".ms", "") \
                       + "_status.pdf")
+        for m, n product(range(len(intents)), yaxes)
             #plotms png files
-            for n in ["amp", "phase"]:
-                #ant1
-                im = sorted(glob.glob(dir_save \
-                            + dir_ms[i].split("/")[5].replace(".ms", "") \
-                            + "_" + n + "*ant1*" + field_intent[m] \
-                            + "*.png"))
-                os.system("convert -pointsize 20 label:'" + n \
-                          + " vs. ant1@" + field_intent[m] \
-                          + "\n1.avgc, 2.avgt, 3.avgct' " \
-                          + dir_save + "name.png")
-                im.append(dir_save + "name.png")
-                os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
-                          + " " + im[3] \
-                          + " -tile 2x2 -geometry 800x600+10+10 " \
-                          + dir_save + "p001.pdf")
-                #ant2
-                im = sorted(glob.glob(dir_save \
-                            + dir_ms[i].split("/")[5].replace(".ms", "") \
-                            + "_" + n + "*ant2*" + field_intent[m] \
-                            + "*.png"))
-                os.system("convert -pointsize 20 label:'" + n \
-                          + " vs. ant2@" + field_intent[m] \
-                          + "\n1.avgc, 2.avgt, 3.avgct' " + dir_save \
-                          + "name.png")
-                im.append(dir_save + "name.png")
-                os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
-                          + " " + im[3] \
-                          + " -tile 2x2 -geometry 800x600+10+10 " \
-                          + dir_save + "p002.pdf")
-                #uvdist
-                im = sorted(glob.glob(dir_save \
-                            + dir_ms[i].split("/")[5].replace(".ms", "") \
-                            + "_" + n + "*uvdist*" + field_intent[m] \
-                            + "*.png"))
-                os.system("convert -pointsize 20 label:'" + n \
-                          + " vs. uvdist@" + field_intent[m] \
-                          + "\n1.avgc, 2.avgt, 3.avgct' " \
-                          + dir_save + "name.png")
-                im.append(dir_save + "name.png")
-                os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
-                          + " " + im[3] \
-                          + " -tile 2x2 -geometry 800x600+10+10 " \
-                          + dir_save + "p003.pdf")
-                #freq/time
-                im = sorted(glob.glob(dir_save \
-                            + dir_ms[i].split("/")[5].replace(".ms", "") \
-                            + "_" + n + "*freq*" + field_intent[m] \
-                            + "*.png"))
-                im2 = sorted(glob.glob(dir_save \
-                             + dir_ms[i].split("/")[5].replace(".ms", "") \
-                             + "_" + n + "*time*" + field_intent[m] \
-                             + "*.png"))
-                im.extend(im2)
-                os.system("montage " + im[0] + " " + im[1] \
-                          + " -tile 2x1 -geometry 800x600+10+10 " \
-                          + dir_save + "p004.pdf")
-                #merge
-                im=sorted(glob.glob(dir_save + "p00*.pdf"))
-                os.system("convert " + im[0] + " " + im[1] + " " + im[2] \
-                          + " " + im[3] + " " + dir_save \
-                          + dir_ms[i].split("/")[5].replace(".ms", "") \
-                          + "_" + field_intent[m] + "_" + n + ".pdf")
-                os.system("rm -rf " + dir_save + "p00*.pdf")
+            #ant1
+            im = sorted(glob.glob(dir_save \
+                        + dir_ms[i].split("/")[5].replace(".ms", "") \
+                        + "_" + n + "*ant1*" + field_intent[m] + "*.png"))
+            os.system("convert -pointsize 20 label:'" + n + " vs. ant1@" \
+                      + field_intent[m] + "\n1.avgc, 2.avgt, 3.avgct' " \
+                      + dir_save + "name.png")
+            im.append(dir_save + "name.png")
+            os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
+                      + " " + im[3] \
+                      + " -tile 2x2 -geometry 800x600+10+10 " \
+                      + dir_save + "p001.pdf")
+            #ant2
+            im = sorted(glob.glob(dir_save \
+                        + dir_ms[i].split("/")[5].replace(".ms", "") \
+                        + "_" + n + "*ant2*" + field_intent[m] + "*.png"))
+            os.system("convert -pointsize 20 label:'" + n + " vs. ant2@" \
+                      + field_intent[m] + "\n1.avgc, 2.avgt, 3.avgct' " \
+                      + dir_save + "name.png")
+            im.append(dir_save + "name.png")
+            os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
+                      + " " + im[3] \
+                      + " -tile 2x2 -geometry 800x600+10+10 " \
+                      + dir_save + "p002.pdf")
+            #uvdist
+            im = sorted(glob.glob(dir_save \
+                        + dir_ms[i].split("/")[5].replace(".ms", "") \
+                        + "_" + n + "*uvdist*" + field_intent[m] \
+                        + "*.png"))
+            os.system("convert -pointsize 20 label:'" + n \
+                      + " vs. uvdist@" + field_intent[m] \
+                      + "\n1.avgc, 2.avgt, 3.avgct' " \
+                      + dir_save + "name.png")
+            im.append(dir_save + "name.png")
+            os.system("montage " + im[0] + " " + im[1] + " " + im[2] \
+                      + " " + im[3] \
+                      + " -tile 2x2 -geometry 800x600+10+10 " \
+                      + dir_save + "p003.pdf")
+            #freq/time
+            im = sorted(glob.glob(dir_save \
+                        + dir_ms[i].split("/")[5].replace(".ms", "") \
+                        + "_" + n + "*freq*" + field_intent[m] \
+                        + "*.png"))
+            im2 = sorted(glob.glob(dir_save \
+                         + dir_ms[i].split("/")[5].replace(".ms", "") \
+                         + "_" + n + "*time*" + field_intent[m] \
+                         + "*.png"))
+            im.extend(im2)
+            os.system("montage " + im[0] + " " + im[1] \
+                      + " -tile 2x1 -geometry 800x600+10+10 " \
+                      + dir_save + "p004.pdf")
+            #merge
+            im=sorted(glob.glob(dir_save + "p00*.pdf"))
+            os.system("convert " + im[0] + " " + im[1] + " " + im[2] \
+                      + " " + im[3] + " " + dir_save \
+                      + dir_ms[i].split("/")[5].replace(".ms", "") \
+                      + "_" + field_intent[m] + "_" + n + ".pdf")
+            os.system("rm -rf " + dir_save + "p00*.pdf")
         pdf = glob.glob(dir_save + "*.pdf")
         for i in range(len(pdf)):
             shutil.copy(pdf[i], "../visual_qa/")
