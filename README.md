@@ -30,7 +30,7 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
 
 
 ## execfile("run_scriptForPI.py")  
-TBE.  
+run all scriptForPI.py under all science_goal*/member*/group*/script/ directories, if calibrated/ directory is not present under group/ directory.  
 
 
 ## execfile("visual_qaplots.py")
