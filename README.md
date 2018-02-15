@@ -22,7 +22,7 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
     |    ├  uid___A002_Xc53e4e_X2579_bpcal_amp.pdf  
     |    ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
     |    ├  uid___A002_Xc53e4e_X2579_phcal_amp.pdf  
-    |    ├  uid___A002_Xc53e4e_X2579_bpcal_phase.pdf  
+    |    ├  uid___A002_Xc53e4e_X2579_phcal_phase.pdf  
     |    ├  uid___A002_Xc53e4e_X2579_status.pdf    
     |    └  uid___A002_X*  
     └  imaging                                          ! contains all images by imaging pipelines
