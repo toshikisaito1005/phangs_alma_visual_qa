@@ -30,9 +30,9 @@ git clone https://github.com/toshikisaito1005/phangs_visual_qa_scripts.git
 
 
 ## execfile("run_scriptForPI.py")  
-run all scriptForPI.py under all science_goal*/member*/group*/script/ directories, if calibrated/ directory is not present under group/ directory.  
+Run all scriptForPI.py under all science_goal*/member*/group*/script/ directories, if calibrated/ directory is not present under group*/ directory.  
 
 
 ## execfile("visual_qaplots.py")
-TBE.  
+Create visual_qa/ directory, which contains some useful diagnostic plots (png files and merged pdf files) by plotms and weblog.  It takes ~10 minutes per \*.ms.
 
