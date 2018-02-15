@@ -34,5 +34,5 @@ Run all scriptForPI.py under all science_goal*/member*/group*/script/ directorie
 
 
 ## execfile("visual_qaplots.py")
-Create visual_qa/ directory, which contains some useful diagnostic plots (png files and merged pdf files) by plotms and weblog.  It takes ~10 minutes per \*.ms.
+Create visual_qa/ directory, which contains some useful diagnostic plots (png files and merged pdf files) by plotms and weblog.  It takes ~10 minutes per \*.ms.  Skip the plotms part (e.g., for uid___A002_Xc53e4e_X2579.ms), if there is a sub-directory, uid___A002_Xc53e4e_X2579/ under visual_qa/ directory.  Skip the png2pdf part if there are all (i.e., five) pdf files under visual_qa/ directory.  
 
