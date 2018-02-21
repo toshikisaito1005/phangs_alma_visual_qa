@@ -56,7 +56,7 @@ for i, j, yaxis in product(dir_mss, intents, yaxes):
         for xaxis in ["ant1__", "ant2__", "uvdist"]:
             avgchannel = "1e8"
             avgtime = "1e8"
-            avgscan = True
+            avgscan = False
             plotfile = dir_save \
                        + dir_ms[i].split("/")[5].replace(".ms", "") \
                        + "_" + yaxis + "_" + xaxis + "_" \
