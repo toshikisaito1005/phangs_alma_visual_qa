@@ -22,19 +22,16 @@ from itertools import product
 dir_ms = glob.glob("../science_*/group.*/member.*/calibrated/uid*.ms")
 dir_current = os.getcwd()
 
+"""
 ### identify TP data
+### TP data created by scriptForPI.py have ".ms.split.cal" extension, which is different
+### from 7m and 12m data (should be ".ms").
+
 dir_jyperk = glob.glob("../science_*/group.*/member.*/calibration/jyperk.csv")
 dir_TP = []
 for i in range(len(dir_jyperk)):
     dir_TP.append(dir_jyperk[i].split("/calibration/jyperk.csv")[0])
-
-test = []
-for i in range(len(dir_ms)):
-    for j in range(len(dir_jyperk)):
-        value = dir_ms[i].find(dir_jyperk[j])
-        if value == -1:
-            test.append(dir_ms[i])
-
+"""
 
 ### start main part
 done = glob.glob("../visual_qa/")
